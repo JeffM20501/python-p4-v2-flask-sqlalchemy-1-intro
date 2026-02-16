@@ -9,6 +9,17 @@ db = SQLAlchemy(metadata=metadata)
 
 # define a model class by inheriting from db.Model.
 
+class User(db.Model):
+    __tablename__='users'
+    
+    id=db.Column(db.Integer, primary_key=True)
+    username=db.Column(db.String(80), unique=True,
+                    nullable=False, index=True
+                    )
+    email=db.Column(db.String(120), unique=True)
+    verfied=db.Column(db.Boolean, default=False)
+    
+
 
 class Pet(db.Model):
     __tablename__ = 'pets'
